@@ -1,0 +1,54 @@
+PODS:
+  - Flutter (1.0.0)
+  - jd_zendesk_support_plugin (0.0.1):
+    - Flutter
+    - ZendeskSupportSDK (= 5.1.0)
+  - ZendeskCommonUISDK (5.1.0):
+    - ZendeskSDKConfigurationsSDK (~> 1.1.6)
+  - ZendeskCoreSDK (2.4.1)
+  - ZendeskMessagingAPISDK (3.7.0):
+    - ZendeskSDKConfigurationsSDK (~> 1.1.6)
+  - ZendeskMessagingSDK (3.7.0):
+    - ZendeskCommonUISDK (~> 5.1.0)
+    - ZendeskMessagingAPISDK (~> 3.7.0)
+  - ZendeskSDKConfigurationsSDK (1.1.7)
+  - ZendeskSupportProvidersSDK (5.1.1):
+    - ZendeskCoreSDK (~> 2.4.1)
+  - ZendeskSupportSDK (5.1.0):
+    - ZendeskMessagingSDK (~> 3.7.0)
+    - ZendeskSupportProvidersSDK (~> 5.1.0)
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - jd_zendesk_support_plugin (from `.symlinks/plugins/jd_zendesk_support_plugin/ios`)
+
+SPEC REPOS:
+  trunk:
+    - ZendeskCommonUISDK
+    - ZendeskCoreSDK
+    - ZendeskMessagingAPISDK
+    - ZendeskMessagingSDK
+    - ZendeskSDKConfigurationsSDK
+    - ZendeskSupportProvidersSDK
+    - ZendeskSupportSDK
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  jd_zendesk_support_plugin:
+    :path: ".symlinks/plugins/jd_zendesk_support_plugin/ios"
+
+SPEC CHECKSUMS:
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  jd_zendesk_support_plugin: 408d9a5436d9d92a54dadd132220db3f7daaa180
+  ZendeskCommonUISDK: fff44133c8bf74ef6407c31c7cab56084c58dbf4
+  ZendeskCoreSDK: 2dc9457ae01d024ca02f60f6134ad1ad90136c29
+  ZendeskMessagingAPISDK: 64543aaa24e63a6eefe44d0dd6909e55edfe1cc5
+  ZendeskMessagingSDK: 7b7f4818ce6420f5881d1774115cc5525b2686d2
+  ZendeskSDKConfigurationsSDK: 45fa87ec8418697f7fce5e56bec472052f0aedb5
+  ZendeskSupportProvidersSDK: 51c9d4a826f7bd87e3109e5c801c602a6b62c762
+  ZendeskSupportSDK: 95aea2ab473768d8b01fa837002415fb93f8c3e0
+
+PODFILE CHECKSUM: fe0e1ee7f3d1f7d00b11b474b62dd62134535aea
+
+COCOAPODS: 1.10.0
