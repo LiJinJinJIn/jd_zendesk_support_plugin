@@ -1,7 +1,5 @@
 import Flutter
 import UIKit
-import Flutter
-import UIKit
 import SupportSDK
 import ZendeskCoreSDK
 import MessagingSDK
@@ -23,9 +21,7 @@ public class SwiftJdZendeskSupportPlugin: NSObject, FlutterPlugin {
           let applicationId = dic["applicationId"] as? String ?? ""
           let oauthClientId = dic["oauthClientId"] as? String ?? ""
           let userIdentifier = dic["userIdentifier"] as? String ?? ""
-
-          print("init           \(zendeskUrl)           \(applicationId)")
-          print("init           \(oauthClientId)           \(userIdentifier)")
+ 
           Zendesk.initialize(appId: applicationId, clientId: oauthClientId, zendeskUrl: zendeskUrl)
           Support.initialize(withZendesk: Zendesk.instance)
           
@@ -40,8 +36,7 @@ public class SwiftJdZendeskSupportPlugin: NSObject, FlutterPlugin {
           
           let requestConfig = RequestUiConfiguration()
           requestConfig.tags = [deviceType,versionName]
-          
-          print("helpCenter           \(deviceType)           \(articlesForCategoryIds)")
+           
           let hcConfig = HelpCenterUiConfiguration()
           hcConfig.showContactOptions = true
           hcConfig.groupType = .category
@@ -55,8 +50,27 @@ public class SwiftJdZendeskSupportPlugin: NSObject, FlutterPlugin {
               let navigationController:UINavigationController! = UINavigationController(rootViewController:helpCenter)
               rootViewController.present(navigationController, animated:true, completion:nil)
           }
+    
+      case "showArticle":
+        guard let dic = call.arguments as? Dictionary<String, Any> else { return }
+        let articleId = dic["articleId"] as? NSNumber ?? 0
+        let deviceType = dic["deviceType"] as? String ?? ""
+        let versionName = dic["versionName"] as? String ?? ""
         
-          print(" end  ")
+        let requestConfig = RequestUiConfiguration()
+        requestConfig.tags = [deviceType,versionName]
+        
+        let articleController = HelpCenterUi.buildHelpCenterArticleUi(withArticleId: articleId.stringValue, andConfigs: [requestConfig])
+    
+
+        let rootViewController:UIViewController! = UIApplication.shared.keyWindow?.rootViewController
+        if (rootViewController is UINavigationController) {
+            (rootViewController as! UINavigationController).pushViewController(articleController, animated:true)
+        }else {
+            let navigationController:UINavigationController! = UINavigationController(rootViewController:articleController)
+            rootViewController.present(navigationController, animated:true, completion:nil)
+        }
+        
       case "signOut":
           Zendesk.instance?.setIdentity(Identity.createAnonymous())
       default:

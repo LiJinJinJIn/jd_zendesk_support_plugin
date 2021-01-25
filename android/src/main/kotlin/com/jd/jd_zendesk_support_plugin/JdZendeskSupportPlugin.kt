@@ -15,6 +15,7 @@ import zendesk.core.JwtIdentity
 import zendesk.core.Zendesk
 import zendesk.support.Support
 import zendesk.support.guide.HelpCenterActivity
+import zendesk.support.guide.ViewArticleActivity
 import zendesk.support.request.RequestActivity
 
 /** FlutterPluginDemoPlugin */
@@ -68,6 +69,21 @@ class JdZendeskSupportPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                         .show(activity, requestConfig)
 
             }
+
+            "showArticle" -> {
+                val articleId = call.argument<Long>("articleId") ?: 0L
+                val deviceType = call.argument<String>("deviceType") ?: ""
+                val versionName = call.argument<String>("versionName") ?: ""
+
+                val requestConfig =
+                        RequestActivity.builder()
+                                .withTags(deviceType, versionName).config()
+
+
+                ViewArticleActivity.builder(articleId).show(activity, requestConfig)
+
+            }
+
             "signOut" -> {
                 Zendesk.INSTANCE.setIdentity(AnonymousIdentity())
             }
