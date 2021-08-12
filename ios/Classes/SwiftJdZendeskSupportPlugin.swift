@@ -33,9 +33,9 @@ public class SwiftJdZendeskSupportPlugin: NSObject, FlutterPlugin {
           let articlesForCategoryIds = dic["articlesForCategoryIds"] as? NSNumber ?? 0
           let deviceType = dic["deviceType"] as? String ?? ""
           let versionName = dic["versionName"] as? String ?? ""
-          
+          let language = dic["language"] as? String ?? ""
           let requestConfig = RequestUiConfiguration()
-          requestConfig.tags = [deviceType,versionName]
+          requestConfig.tags = [deviceType,versionName,language]
            
           let hcConfig = HelpCenterUiConfiguration()
           hcConfig.showContactOptions = true
@@ -56,9 +56,9 @@ public class SwiftJdZendeskSupportPlugin: NSObject, FlutterPlugin {
         let articleId = dic["articleId"] as? NSNumber ?? 0
         let deviceType = dic["deviceType"] as? String ?? ""
         let versionName = dic["versionName"] as? String ?? ""
-        
+        let language = dic["language"] as? String ?? ""
         let requestConfig = RequestUiConfiguration()
-        requestConfig.tags = [deviceType,versionName]
+        requestConfig.tags = [deviceType,versionName,language]
         
         let articleController = HelpCenterUi.buildHelpCenterArticleUi(withArticleId: articleId.stringValue, andConfigs: [requestConfig])
     

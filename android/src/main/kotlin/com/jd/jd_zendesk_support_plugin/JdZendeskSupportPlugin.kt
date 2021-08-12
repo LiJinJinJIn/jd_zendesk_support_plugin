@@ -51,6 +51,7 @@ class JdZendeskSupportPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 val articlesForCategoryIds = call.argument<Long>("articlesForCategoryIds") ?: 0L
                 val deviceType = call.argument<String>("deviceType") ?: ""
                 val versionName = call.argument<String>("versionName") ?: ""
+                val language = call.argument<String>("language") ?: ""
                 val categoriesCollapsed = call.argument<Boolean>("categoriesCollapsed") ?: false
                 val contactUsButtonVisible = call.argument<Boolean>("contactUsButtonVisible")
                         ?: true
@@ -59,7 +60,7 @@ class JdZendeskSupportPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 
                 val requestConfig =
                         RequestActivity.builder()
-                                .withTags(deviceType, versionName).config()
+                                .withTags(deviceType, versionName,language).config()
 
                 HelpCenterActivity.builder()
                         .withCategoriesCollapsed(categoriesCollapsed)
@@ -74,10 +75,11 @@ class JdZendeskSupportPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 val articleId = call.argument<Long>("articleId") ?: 0L
                 val deviceType = call.argument<String>("deviceType") ?: ""
                 val versionName = call.argument<String>("versionName") ?: ""
+                val language = call.argument<String>("language") ?: ""
 
                 val requestConfig =
                         RequestActivity.builder()
-                                .withTags(deviceType, versionName).config()
+                                .withTags(deviceType, versionName,language).config()
 
 
                 ViewArticleActivity.builder(articleId).show(activity, requestConfig)

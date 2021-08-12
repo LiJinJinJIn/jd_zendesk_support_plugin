@@ -23,11 +23,13 @@ class JdZendeskSupportPlugin {
       String versionName,
       bool categoriesCollapsed,
       bool contactUsButtonVisible,
-      bool showConversationsMenuButton}) async {
+      bool showConversationsMenuButton,
+      String language}) async {
     await _channel.invokeMethod('helpCenter', <String, dynamic>{
       'articlesForCategoryIds': articlesForCategoryIds,
       'deviceType': deviceType,
       'versionName': versionName,
+      'language': language,
       'categoriesCollapsed': categoriesCollapsed,
       'contactUsButtonVisible': contactUsButtonVisible,
       'showConversationsMenuButton': showConversationsMenuButton,
@@ -36,11 +38,12 @@ class JdZendeskSupportPlugin {
 
   ///打开指定的文章
   ///展示固定的文章信息
-  Future<void> showArticle({int articleId, String deviceType, String versionName}) async {
+  Future<void> showArticle({int articleId, String deviceType, String versionName, String language}) async {
     await _channel.invokeMethod('showArticle', <String, dynamic>{
       'articleId': articleId,
       'deviceType': deviceType,
       'versionName': versionName,
+      'language': language,
     });
   }
 
